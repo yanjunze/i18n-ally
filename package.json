@@ -1038,6 +1038,15 @@
         },
         "vue-i18n-ally.readonly": {
           "deprecationMessage": "%config.deprecated%"
+        },
+        "vue-i18n-ally.ihrMatcher": {
+          "type": "string",
+          "description": "Ihr项目的模块名Matcher"
+        },
+        "vue-i18n-ally.ihrLibName": {
+          "type": "string",
+          "default": "ihr-lib",
+          "description": "Ihr项目公共框架库的项目名称"
         }
       }
     }

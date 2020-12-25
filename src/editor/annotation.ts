@@ -5,6 +5,7 @@ import { ExtensionModule } from '../modules'
 import { getCommentState } from '../utils/shared'
 import { THROTTLE_DELAY } from '../meta'
 import { createHover } from './hover'
+import { getKeyPathWithModule } from '../frameworks/ihr'
 
 const underlineDecorationType = window.createTextEditorDecorationType({
   textDecoration: 'underline',
@@ -254,8 +255,8 @@ const annotation: ExtensionModule = (ctx) => {
       const key = _current_usages.keys.find(k => k.start <= offset && k.end >= offset)
       if (!key)
         return
-
-      const markdown = createHover(key.key, Config.annotationMaxLength, undefined, _current_usages.keys.indexOf(key))
+      const keyPath = getKeyPathWithModule(document, key.key);
+      const markdown = createHover(keyPath, Config.annotationMaxLength, undefined, _current_usages.keys.indexOf(key))
       if (!markdown)
         return
 

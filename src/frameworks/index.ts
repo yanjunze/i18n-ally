@@ -3,6 +3,7 @@ import i18n from '../i18n'
 import { Log } from '../utils'
 import { PackageJSONParser, PubspecYAMLParser, ComposerJSONParser, GemfileParser } from '../packagesParsers'
 import { Framework, PackageFileType } from './base'
+import IhrFramework from './ihr'
 import VueFramework from './vue'
 import ReactFramework from './react'
 import I18nextFramework from './i18next'
@@ -31,6 +32,7 @@ export const frameworks: Framework[] = [
   // Custom should be the first one
   new CustomFramework(),
 
+  new IhrFramework(),
   new VueFramework(),
   new ReactFramework(),
   new NgxTranslateFramework(),

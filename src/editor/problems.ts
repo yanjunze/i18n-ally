@@ -3,6 +3,7 @@ import { EXT_NAMESPACE } from '../meta'
 import { Global, KeyDetector, Config, Loader, CurrentFile } from '../core'
 import { ExtensionModule } from '../modules'
 import i18n from '../i18n'
+import { getKeyPathWithModule } from '../frameworks/ihr'
 
 export class ProblemProvider {
   private collection: DiagnosticCollection
@@ -28,6 +29,7 @@ export class ProblemProvider {
       const keys = KeyDetector.getKeys(document)
       // get all keys of current file
       keys.forEach(({ key, start, end }) => {
+        key = getKeyPathWithModule(document, key);
         const has_translation = !!loader.getValueByKey(key, locale)
         if (has_translation)
           return

@@ -170,6 +170,14 @@ export abstract class Loader extends Disposable {
     const keys = NodeHelper.splitKeypath(key)
     const head = keys[0]
     const remaining = keys.slice(1).join('.')
+
+    // 对treeNode打补丁以支持取到公共的语言包的node
+    if (root && tree && keys?.[1] === Config.ihrLibName) {
+      const result = this.getTreeNodeByKey(key, tree);
+      if (result) return result;
+      else return this.getTreeNodeByKey(remaining);
+    }
+
     const node = tree.getChild(head)
     if (remaining === '')
       return node

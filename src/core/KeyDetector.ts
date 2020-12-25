@@ -6,6 +6,7 @@ import { Global } from './Global'
 import { RewriteKeyContext } from './types'
 import { Config } from './Config'
 import { Loader } from './loaders/Loader'
+import { getKeyPathWithModule } from '../frameworks/ihr'
 
 export interface KeyUsages {
   type: 'code'| 'locale'
@@ -135,6 +136,7 @@ export class KeyDetector {
     }
     // code
     else if (Global.isLanguageIdSupported(document.languageId)) {
+      namespace = getKeyPathWithModule(filepath);
       keys = KeyDetector.getKeys(document)
     }
     else {

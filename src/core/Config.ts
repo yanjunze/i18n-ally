@@ -433,6 +433,14 @@ export class Config {
       ?? TargetPickingStrategy.None
   }
 
+  static get ihrMatcher() {
+    return this.getConfig<any>('ihrMatcher') ?? '';
+  }
+
+  static get ihrLibName() {
+    return this.getConfig<string>('ihrLibName') ?? '';
+  }
+
   // config
   private static getConfig<T = any>(key: string): T | undefined {
     let config = workspace

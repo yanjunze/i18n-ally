@@ -197,7 +197,7 @@ export class Global {
   }
 
   static get namespaceEnabled() {
-    return Config.namespace || this.hasFeatureEnabled('namespace')
+    return Config.namespace || !!Config.ihrMatcher || this.hasFeatureEnabled('namespace')
   }
 
   static get localesPaths() {
